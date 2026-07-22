@@ -1,0 +1,47 @@
+# Source material and local sensitive data must never be committed.
+wiki/
+.local/
+private/
+secrets/
+data/private/
+data/knowledge/
+data/runtime/
+
+# Office/PDF artifacts may contain copied source material or personal data.
+*.doc
+*.docx
+*.pdf
+*.xls
+*.xlsx
+
+# Secrets and local configuration.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Python.
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+htmlcov/
+.coverage
+
+# Node and frontend output.
+node_modules/
+dist/
+build/
+coverage/
+
+# IDE, OS, logs, and review artifacts.
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+.codex-review/
+
