@@ -1,17 +1,16 @@
-# Medicine Agents
+# 医学教学病例智能体
 
-A file-first, single-operator MVP for generating, reviewing, and publishing medical teaching case and question-answer packages.
+这是一个采用文件优先架构、面向单人运行的医学教学病例 MVP，用于生成、审核和发布结构化病例及配套问题答案包。
 
-## Current state
+## 当前状态
 
-The repository security baseline and approved project design have been initialized. Application scaffolding and the detailed implementation plan begin after review of the written design specification.
+仓库安全基线和已批准的项目设计已经初始化。完成书面设计规格审阅后，将开始工程脚手架和详细实施计划。
 
-## Start here
+## 从这里开始
 
-- [Approved MVP design](docs/design/2026-07-22-file-first-mvp-design.md)
-- [Repository data and privacy policy](docs/security/repository-data-policy.md)
+- [文件优先 MVP 设计规格](docs/design/2026-07-22-文件优先MVP设计.md)
+- [仓库数据与隐私策略](docs/security/仓库数据与隐私策略.md)
 
-## Repository boundary
+## 仓库边界
 
-Private source material and real medical inputs are local-only. See the repository privacy policy before staging or committing any file.
-
+申请材料、真实医学资料和运行产物仅保存在本地，不进入版本库。暂存或提交任何文件前，请先阅读仓库数据与隐私策略。
