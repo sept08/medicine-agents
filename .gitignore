@@ -44,4 +44,4 @@ coverage/
 Thumbs.db
 *.log
 .codex-review/
-
+.worktrees/
