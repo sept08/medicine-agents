@@ -1,0 +1,21 @@
+version: 1
+scope: mvp
+diseases:
+  - code: DKD
+    display_name: 糖尿病肾病
+    specialty: 肾脏内科
+  - code: CKD
+    display_name: 慢性肾脏病
+    specialty: 肾脏内科
+  - code: AKI
+    display_name: 急性肾损伤
+    specialty: 肾脏内科
+  - code: CHF
+    display_name: 慢性心力衰竭
+    specialty: 心血管内科
+  - code: AMI
+    display_name: 急性心肌梗死
+    specialty: 心血管内科
+  - code: HTN_EMERGENCY
+    display_name: 高血压急症
+    specialty: 心血管内科

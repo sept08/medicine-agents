@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+
 import subprocess
 import unittest
 from pathlib import Path
@@ -112,5 +114,18 @@ class ProjectBaselineTests(unittest.TestCase):
         text = (ROOT / "docs/guides/医学团队资料准备指南.md").read_text(encoding="utf-8")
         for term in ["S2", "3 例", "脱敏", "授权", "阻塞", "并行"]:
             self.assertIn(term, text)
+    def test_synthetic_order_is_non_identifying_and_uses_mvp_disease(self) -> None:
+        order = json.loads(
+            (ROOT / "data/samples/orders/synthetic-order.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual("DKD", order["disease_code"])
+        self.assertEqual("basic", order["difficulty"])
+        self.assertEqual(["识别关键临床线索"], order["teaching_objectives"])
+        self.assertNotIn("name", order)
+
+    def test_mvp_disease_configuration_uses_frozen_codes(self) -> None:
+        text = (ROOT / "config/diseases/mvp.yaml").read_text(encoding="utf-8")
+        for code in ["DKD", "CKD", "AKI", "CHF", "AMI", "HTN_EMERGENCY"]:
+            self.assertIn(f"code: {code}", text)
 if __name__ == "__main__":
     unittest.main()
