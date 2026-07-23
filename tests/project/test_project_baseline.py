@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -24,6 +25,20 @@ class ProjectBaselineTests(unittest.TestCase):
         ]
         missing = [path for path in required if not (ROOT / path).exists()]
         self.assertEqual([], missing)
+
+    def test_python_build_metadata_is_ignored(self) -> None:
+        result = subprocess.run(
+            [
+                "git",
+                "check-ignore",
+                "-q",
+                "--no-index",
+                "apps/api/src/medicine_agents.egg-info/PKG-INFO",
+            ],
+            cwd=ROOT,
+            check=False,
+        )
+        self.assertEqual(0, result.returncode)
 
 
 if __name__ == "__main__":
