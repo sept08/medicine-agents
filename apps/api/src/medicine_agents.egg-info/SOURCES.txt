@@ -1,0 +1,9 @@
+README.md
+pyproject.toml
+apps/api/src/medicine_agents.egg-info/PKG-INFO
+apps/api/src/medicine_agents.egg-info/SOURCES.txt
+apps/api/src/medicine_agents.egg-info/dependency_links.txt
+apps/api/src/medicine_agents.egg-info/entry_points.txt
+apps/api/src/medicine_agents.egg-info/requires.txt
+apps/api/src/medicine_agents.egg-info/top_level.txt
+apps/api/src/medicine_agents.egg-info/SOURCES.txt

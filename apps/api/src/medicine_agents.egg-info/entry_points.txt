@@ -1,0 +1,2 @@
+[console_scripts]
+medicine-agents = medicine_agents.__main__:main
