@@ -40,6 +40,30 @@ class ProjectBaselineTests(unittest.TestCase):
         )
         self.assertEqual(0, result.returncode)
 
+    def test_current_status_has_required_operational_fields(self) -> None:
+        text = (ROOT / "project/CURRENT_STATUS.md").read_text(encoding="utf-8")
+        for heading in [
+            "当前阶段",
+            "本阶段验收目标",
+            "已完成",
+            "正在进行",
+            "当前阻塞",
+            "等待医学团队输入",
+            "下一可体验入口",
+            "下一步",
+        ]:
+            self.assertIn(heading, text)
+
+    def test_roadmap_lists_every_frozen_stage(self) -> None:
+        text = (ROOT / "project/ROADMAP.md").read_text(encoding="utf-8")
+        for stage in ["S0", "S1", "S2", "S3", "S4", "S5", "S6", "S7", "S8", "S9"]:
+            self.assertIn(stage, text)
+
+    def test_input_register_declares_blocking_level(self) -> None:
+        text = (ROOT / "project/INPUT_REGISTER.md").read_text(encoding="utf-8")
+        for field in ["输入编号", "目标阶段", "最晚需要时间", "阻塞等级", "验收人"]:
+            self.assertIn(field, text)
+
 
 if __name__ == "__main__":
     unittest.main()
