@@ -19,7 +19,8 @@ class CrossPlatformContractTests(unittest.TestCase):
         workflow = (ROOT / ".github" / "workflows" / "ci.yml").read_text(encoding="utf-8")
         self.assertIn("windows-latest", workflow)
         self.assertIn("macos-latest", workflow)
-        self.assertIn("python -m unittest discover", workflow)
+        self.assertIn(".[dev]", workflow)
+        self.assertIn("python scripts/test.py", workflow)
 
 
 if __name__ == "__main__":

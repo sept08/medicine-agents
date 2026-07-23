@@ -127,5 +127,35 @@ class ProjectBaselineTests(unittest.TestCase):
         text = (ROOT / "config/diseases/mvp.yaml").read_text(encoding="utf-8")
         for code in ["DKD", "CKD", "AKI", "CHF", "AMI", "HTN_EMERGENCY"]:
             self.assertIn(f"code: {code}", text)
+    def test_operator_entrypoints_are_cross_platform_python(self) -> None:
+        for path in [
+            "scripts/bootstrap.py",
+            "scripts/run_api.py",
+            "scripts/test.py",
+            ".github/workflows/ci.yml",
+        ]:
+            self.assertTrue((ROOT / path).is_file(), path)
+
+    def test_pre_commit_hook_does_not_require_powershell(self) -> None:
+        hook = (ROOT / ".githooks/pre-commit").read_text(encoding="utf-8")
+        self.assertIn("check_sensitive_content.py", hook)
+        self.assertIn("python3", hook)
+        self.assertNotIn("pwsh", hook)
+        self.assertNotIn("powershell.exe", hook)
+
+    def test_ci_covers_windows_macos_and_application_tests(self) -> None:
+        workflow = (ROOT / ".github/workflows/ci.yml").read_text(encoding="utf-8")
+        for term in ["windows-latest", "macos-latest", ".[dev]", "scripts/test.py"]:
+            self.assertIn(term, workflow)
+
+    def test_readme_documents_cross_platform_operator_commands(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        for term in [
+            "py -3.11 scripts/bootstrap.py",
+            "python3 scripts/bootstrap.py",
+            "python scripts/test.py",
+            "python scripts/run_api.py",
+        ]:
+            self.assertIn(term, readme)
 if __name__ == "__main__":
     unittest.main()
