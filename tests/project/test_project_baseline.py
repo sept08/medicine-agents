@@ -64,6 +64,20 @@ class ProjectBaselineTests(unittest.TestCase):
         for field in ["输入编号", "目标阶段", "最晚需要时间", "阻塞等级", "验收人"]:
             self.assertIn(field, text)
 
+    def test_prd_uses_frozen_case_scale(self) -> None:
+        text = (ROOT / "docs/requirements/产品需求文档.md").read_text(encoding="utf-8")
+        self.assertIn("6 个病种", text)
+        self.assertIn("30 个", text)
+        self.assertIn("20 个病种", text)
+        self.assertIn("100 个", text)
+        self.assertNotIn("30 个病种", text)
+        self.assertNotIn("每病种 20", text)
+
+    def test_prd_declares_single_operator_file_first_mvp(self) -> None:
+        text = (ROOT / "docs/requirements/产品需求文档.md").read_text(encoding="utf-8")
+        self.assertIn("单操作者", text)
+        self.assertIn("文件优先", text)
+        self.assertIn("本 PRD 已覆盖 MVP 开工所需", text)
 
 if __name__ == "__main__":
     unittest.main()

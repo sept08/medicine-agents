@@ -8,6 +8,7 @@
 
 ## 从这里开始
 
+- [产品需求文档](docs/requirements/产品需求文档.md)
 - [文件优先 MVP 设计规格](docs/design/2026-07-22-文件优先MVP设计.md)
 - [仓库数据与隐私策略](docs/security/仓库数据与隐私策略.md)
 - [S0 与 S1 实施计划](project/plans/2026-07-22-S0与S1实施计划.md)
