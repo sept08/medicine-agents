@@ -40,3 +40,17 @@ def test_create_order_rejects_empty_objectives(tmp_path) -> None:
     )
 
     assert response.status_code == 422
+
+def test_create_order_rejects_unconfigured_disease(tmp_path) -> None:
+    client = TestClient(create_app(data_dir=tmp_path))
+    response = client.post(
+        "/api/orders",
+        json={
+            "disease_code": "NOT_CONFIGURED",
+            "difficulty": "basic",
+            "target_audience": "undergraduate",
+            "teaching_objectives": ["识别关键临床线索"],
+        },
+    )
+
+    assert response.status_code == 422

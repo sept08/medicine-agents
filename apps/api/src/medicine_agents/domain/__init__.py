@@ -7,6 +7,7 @@ from medicine_agents.domain.models import (
     CasePackage,
     CaseStatus,
     Difficulty,
+    DiseaseCode,
     EvidenceRef,
     TeachingQuestion,
 )
@@ -18,6 +19,7 @@ __all__ = [
     "CasePackage",
     "CaseStatus",
     "Difficulty",
+    "DiseaseCode",
     "EvidenceRef",
     "TeachingQuestion",
 ]
