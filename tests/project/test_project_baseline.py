@@ -79,5 +79,20 @@ class ProjectBaselineTests(unittest.TestCase):
         self.assertIn("文件优先", text)
         self.assertIn("本 PRD 已覆盖 MVP 开工所需", text)
 
+    def test_quality_plan_covers_metrics_and_statistics(self) -> None:
+        text = (ROOT / "docs/quality/质量评价与统计分析方案.md").read_text(encoding="utf-8")
+        for term in [
+            "原子事实准确率",
+            "无依据陈述率",
+            "逻辑自洽率",
+            "严重医学错误",
+            "ICC(2,k)",
+            "Fleiss' Kappa",
+            "TOST",
+            "意向性分析",
+            "缺失数据",
+            "版本冻结",
+        ]:
+            self.assertIn(term, text)
 if __name__ == "__main__":
     unittest.main()
