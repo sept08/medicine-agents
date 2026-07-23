@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from pydantic import ValidationError
 import pytest
 
@@ -27,3 +29,11 @@ def test_case_order_rejects_unknown_fields() -> None:
             teaching_objectives=["识别关键临床线索"],
             unknown="value",
         )
+
+def test_synthetic_sample_matches_order_contract() -> None:
+    root = Path(__file__).resolve().parents[2]
+    order = CaseOrder.model_validate_json(
+        (root / "data/samples/orders/synthetic-order.json").read_text(encoding="utf-8")
+    )
+
+    assert order.length.value == "short"

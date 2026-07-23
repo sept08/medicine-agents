@@ -2,6 +2,7 @@
 
 from medicine_agents.domain.models import (
     CaseContent,
+    CaseLength,
     CaseOrder,
     CasePackage,
     CaseStatus,
@@ -12,6 +13,7 @@ from medicine_agents.domain.models import (
 
 __all__ = [
     "CaseContent",
+    "CaseLength",
     "CaseOrder",
     "CasePackage",
     "CaseStatus",

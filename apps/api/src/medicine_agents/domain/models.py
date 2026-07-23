@@ -16,6 +16,12 @@ class Difficulty(StrEnum):
     ADVANCED = "advanced"
 
 
+class CaseLength(StrEnum):
+    SHORT = "short"
+    MEDIUM = "medium"
+    LONG = "long"
+
+
 class CaseStatus(StrEnum):
     DRAFT = "draft"
     QC_PASSED = "qc_passed"
@@ -31,6 +37,7 @@ class CaseOrder(StrictModel):
     difficulty: Difficulty
     target_audience: str = Field(min_length=1)
     teaching_objectives: list[str] = Field(min_length=1)
+    length: CaseLength = CaseLength.SHORT
 
 
 class EvidenceRef(StrictModel):
