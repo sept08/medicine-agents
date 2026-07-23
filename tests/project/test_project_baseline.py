@@ -94,5 +94,23 @@ class ProjectBaselineTests(unittest.TestCase):
             "版本冻结",
         ]:
             self.assertIn(term, text)
+    def test_mvp_governance_covers_publication_lifecycle(self) -> None:
+        text = (ROOT / "docs/governance/MVP医学内容发布治理规范.md").read_text(encoding="utf-8")
+        for term in [
+            "draft",
+            "qc_passed",
+            "awaiting_medical_review",
+            "approved",
+            "published",
+            "retired",
+            "重新审核",
+            "仅供医学教学",
+        ]:
+            self.assertIn(term, text)
+
+    def test_medical_input_guide_declares_minimum_s2_inputs(self) -> None:
+        text = (ROOT / "docs/guides/医学团队资料准备指南.md").read_text(encoding="utf-8")
+        for term in ["S2", "3 例", "脱敏", "授权", "阻塞", "并行"]:
+            self.assertIn(term, text)
 if __name__ == "__main__":
     unittest.main()
